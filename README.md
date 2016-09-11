@@ -1,1 +1,1 @@
-udemy-ecommerce
+djangoecommerce
