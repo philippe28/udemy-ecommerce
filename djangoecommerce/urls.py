@@ -21,6 +21,7 @@ from django.views.static import serve as serve_static
 from core import views
 from catalog import views as views_catalog
 
+
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^contato/$', views.contact, name='contact'),
