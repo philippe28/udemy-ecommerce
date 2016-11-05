@@ -33,12 +33,3 @@ def contact(request):
         'success': success
     }
     return render(request, 'contact.html', context)
-
-
-class RegisterView(CreateView):
-    form_class = UserCreationForm
-    template_name = 'register.html'
-    model = User
-    success_url = reverse_lazy('index')
-
-register = RegisterView.as_view()
