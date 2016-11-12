@@ -34,7 +34,6 @@ class UpdateUserView(LoginRequiredMixin, UpdateView):
 
 
 class UpdatePasswordView(LoginRequiredMixin, FormView):
-
     template_name = 'accounts/update_password.html'
     success_url = reverse_lazy('accounts:index')
     form_class = PasswordChangeForm
@@ -43,6 +42,10 @@ class UpdatePasswordView(LoginRequiredMixin, FormView):
         kwargs = super(UpdatePasswordView, self).get_form_kwargs()
         kwargs['user'] = self.request.user
         return kwargs
+
+    def form_valid(self,form):
+        form.save()
+        return super(UpadatePassordView,self).form_valid(form)
 
 
 index = IndexView.as_view()
