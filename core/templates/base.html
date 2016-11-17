@@ -50,6 +50,14 @@
       </div>
     </div>
     <div class="container margin-top">
+			{% block message %}
+			{% for message in messages %}
+				<div class="alert alert-{{ message.tags }}">
+					{{message}}
+				</div>
+			{% endfor %}
+
+			{% endblock %}
 		{% block container %}{% endblock %}
 		<footer>
 			<div class="row">
