@@ -1,7 +1,9 @@
+# coding=utf-8
 
 from django.shortcuts import render
 from django.views.generic import (
-    CreateView, TemplateView, UpdateView, FormView)
+    CreateView, TemplateView, UpdateView, FormView
+)
 from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import PasswordChangeForm
@@ -24,6 +26,7 @@ class RegisterView(CreateView):
 
 
 class UpdateUserView(LoginRequiredMixin, UpdateView):
+
     model = User
     template_name = 'accounts/update_user.html'
     fields = ['name', 'email']
@@ -34,6 +37,7 @@ class UpdateUserView(LoginRequiredMixin, UpdateView):
 
 
 class UpdatePasswordView(LoginRequiredMixin, FormView):
+
     template_name = 'accounts/update_password.html'
     success_url = reverse_lazy('accounts:index')
     form_class = PasswordChangeForm
@@ -43,9 +47,9 @@ class UpdatePasswordView(LoginRequiredMixin, FormView):
         kwargs['user'] = self.request.user
         return kwargs
 
-    def form_valid(self,form):
+    def form_valid(self, form):
         form.save()
-        return super(UpadatePassordView,self).form_valid(form)
+        return super(UpdatePasswordView, self).form_valid(form)
 
 
 index = IndexView.as_view()

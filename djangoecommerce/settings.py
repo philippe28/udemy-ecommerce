@@ -22,10 +22,10 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY','123')
+SECRET_KEY = os.getenv('SECRET_KEY', '123')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -43,8 +43,8 @@ INSTALLED_APPS = [
     'widget_tweaks',
     # apps
     'core',
-    'catalog',
     'accounts',
+    'catalog',
     'checkout',
 ]
 
@@ -146,7 +146,7 @@ EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
 DEFAULT_FROM_EMAIL = 'admin@djangoecommerce.com'
 
-#login
+# auth
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'index'
 LOGOUT_URL = 'logout'
@@ -156,16 +156,15 @@ AUTHENTICATION_BACKENDS = (
     'accounts.backends.ModelBackend',
 )
 
-#Messages
+# Messages
 from django.contrib.messages import constants as messages_constants
 MESSAGE_TAGS = {
-messages_constants.DEBUG:'debug',
-messages_constants.INFO:'info',
-messages_constants.SUCCESS:'success',
-messages_constants.WARNING:'warning',
-messages_constants.ERROR:'danger',
+    messages_constants.DEBUG: 'debug',
+    messages_constants.INFO: 'info',
+    messages_constants.SUCCESS: 'success',
+    messages_constants.WARNING: 'warning',
+    messages_constants.ERROR: 'danger',
 }
-
 
 try:
     from .local_settings import *

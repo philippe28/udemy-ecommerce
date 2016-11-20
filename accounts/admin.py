@@ -1,3 +1,5 @@
+# coding=utf-8
+
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
@@ -6,10 +8,11 @@ from .forms import UserAdminCreationForm, UserAdminForm
 
 
 class UserAdmin(BaseUserAdmin):
+
     add_form = UserAdminCreationForm
     add_fieldsets = (
         (None, {
-            'fields': ('username', 'name', 'email', 'password1', 'password2')
+            'fields': ('username', 'email', 'password1', 'password2')
         }),
     )
     form = UserAdminForm
@@ -17,22 +20,19 @@ class UserAdmin(BaseUserAdmin):
         (None, {
             'fields': ('username', 'email')
         }),
-        (
-        'Informassões Básicas',{
-        'fields':('name','last_login')
+        ('Informações Básicas', {
+            'fields': ('name', 'last_login')
         }),
         (
-            'permissões', {
+            'Permissões', {
                 'fields': (
-                    'is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions'
+                    'is_active', 'is_staff', 'is_superuser', 'groups',
+                    'user_permissions'
                 )
             }
         ),
     )
-    list_display = ['username', 'name', 'email',
-                    'is_active', 'is_staff', 'data_joined']
+    list_display = ['username', 'name', 'email', 'is_active', 'is_staff', 'date_joined']
 
 
 admin.site.register(User, UserAdmin)
-
-# Register your models here.
